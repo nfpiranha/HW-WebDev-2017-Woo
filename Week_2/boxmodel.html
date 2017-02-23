@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Box Model</title>
+	<!-- Internal Style Sheet -->
+	<style type="text/css">
+	/*use the universal selector to remove all of the default margins and padding from every element on the page so we can write our own from scratch*/
+	*{
+		margin: 0;
+		padding: 0;
+	}
+		/*
+		TAG SELECTOR
+		Applying styles to the body tag will trickle down to all child 
+		elements on the page unless they are overwritten by a more specific tag*/
+	<body{
+		font-family: 'Helvectica Neue', Arial, sans-serif; 
+		color: #555555;
+	}
+	/*First, lets use a tag selector to apply a background color to every div on our page so we can see how our layouts nests and developes*/
+	div{
+		background-color: rgba(0,0,200,.2); 
+	}
+	/*Fixed width grid, using pixels*/
+	.container{
+		/*starter width in pixels*/
+		/*Divs are elements that display block by default. They want to take up 100% of the available space and they dont want to share horizontal space
+		with another element.
+		Blocl level elements can recieve a width and a height to override their default size*/
+		width: 900px;
+		/*we can center block elements that have a defined width using margin auto for the left and right values. think of margins as personal space
+		between elements*/
+		margin: 0 auto;
+		/*margin-top: 100px;*/
+		/*Adding padding will add to our original 900px width, and put space between our container edge and the edge of its child elements*/
+		padding: 10px;
+	}
+
+	.thumbnail{
+		/*Give our thumbnails a fixed width of 300px*/
+		width: 300px;
+		height: 300px;
+		/*Stack to the left as long as there's space using float
+		Notice when we use float by itself, it collapses our container*/
+		float: left;
+
+	}
+	/*clear fix 1: adding a clear class to an invisible element on the page*/
+	.clear{
+		clear: both;
+	}
+	/*Clear fix the right way: use pure css to solve the problem*/
+	.clear-fix::after{
+
+		content: '';
+		display: block;
+		clear: both;
+		/*ensure some older compatibility*/
+		height: 0;
+		font size: 0;
+		visibility: hidden;
+	}
+	.container-fluid{
+		width: 90%;
+		padding: 2%;
+		margin: 10px;
+	}
+	.thumbnail-fluid{
+		width: 20%;
+		height: 300px;
+		float: left;
+		margin: 1%;
+		border: 10px dashed red;
+	}
+	.thumbnail-border{
+		width: 300px;
+		height: 300px;
+		float: left;
+		margin: 10px;
+		/*Border: width | style | color;*/
+		border-width: 5px;
+		width: 250px;
+		padding: 10px;
+
+		border-style: solid;
+		border-color: #0000FF;
+	}
+	p{
+		text-align: justify;
+	}
+
+	</style>
+</head>
+<body>
+<div>sldkjflkdsjfkdsf</div>
+<!-- margin -->
+<h2>Fixed pixel based layout and class= clear</h2>
+<div class="container">
+	<!-- Padding -->
+	<div class="thumbnail"></div>
+	<div class="thumbnail"></div>
+	<div class="thumbnail"></div>
+	<br clear="clear">
+</div>
+<!-- Prefered using clearfix in pure css -->
+<h2>Fixed pixel based layour and clearfix</h2>
+	<div class="container clear-fix" clear-fix>
+	<div class="thumbnail"></div>
+	<div class="thumbnail"></div>
+	<div class="thumbnail"></div>
+</div>
+
+<h2></h2>
+<div class="container" clear-fix>
+	<div class="thumbnail"></div>
+	<div class="thumbnail"></div>
+	<div class="thumbnail"></div>
+	
+</div>
+<h2>Fluid Based Layout Using Percentage</h2>
+
+</body>
+</html>
